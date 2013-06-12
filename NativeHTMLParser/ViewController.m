@@ -20,11 +20,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     
-    
-    
-    
-    
-    
     NSURL* yourURL = [NSURL URLWithString: @"http://www.toysrus.com/product/index.jsp?productId=20405306"];
     NSURLRequest* request = [[NSURLRequest alloc] initWithURL:yourURL];
     
@@ -131,9 +126,6 @@
     
     
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning
