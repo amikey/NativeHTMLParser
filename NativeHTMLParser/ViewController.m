@@ -37,7 +37,6 @@
                                NSLog(@"htmlString\n%@", htmlString);
                                
                                
-                               
                                //PRICE
                                //
                                NSString *startTag = @"<li class=\"retail\">";
@@ -49,11 +48,7 @@
                                [scanner scanUpToString:startTag intoString:nil];
                                scanner.scanLocation += [startTag length];
                                [scanner scanUpToString:endTag intoString:&priceString];
-                               
-                               
-                               //NSLog(@"%@", substring);
-                               
-                               //priceString = nil;
+
                                
                                scanner = [[NSScanner alloc] initWithString:priceString];
                                startTag = @"&#036;";
@@ -64,8 +59,7 @@
                                [scanner scanUpToString:endTag intoString:&priceString];
                                
                                NSLog(@"%@", priceString);
-                               
-                               
+ 
                                
                                //NAME
                                //
@@ -89,67 +83,51 @@
                                [scanner scanUpToString:endTag intoString:&nameString];
                                
                                NSLog(@"name string is %@", nameString);
-                               
-//                               NSRange range;
-//                               while ((range = [nameString rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound) {
-//                                   nameString = [nameString stringByReplacingCharactersInRange:range withString:@""];
-                               
-                               
 
-//                               NSLog(@"%@", nameString);
+
+                               //DESCRIPTION
+                               //
+                               NSString *descriptionString = nil;
+                               
+                               scanner = [[NSScanner alloc] initWithString:htmlString];
+                               startTag = @"<label>Product Description</label>";
+                               endTag = @"<p>";
+                               
+                               [scanner scanUpToString:startTag intoString:nil];
+                               scanner.scanLocation += [startTag length];
+                               [scanner scanUpToString:endTag intoString:&descriptionString
+                                ];
                                
                                
+                               startTag = @"<br />";
+                               endTag = @"<br />";
                                
-//                               //DESCRIPTION
-//                               //
-//                               NSString *descriptionString = nil;
-//                               
-//                               scanner = [[NSScanner alloc] initWithString:htmlString];
-//                               startTag = @"<label>Product Description</label>";
-//                               endTag = @"<p>";
-//                               
-//                               [scanner scanUpToString:startTag intoString:nil];
-//                               scanner.scanLocation += [startTag length];
-//                               [scanner scanUpToString:endTag intoString:&descriptionString
-//                                ];
-//                               
-//                               
-//                               startTag = @"<br />";
-//                               endTag = @"<br />";
-//                               
-//                               scanner = [[NSScanner alloc] initWithString:descriptionString];
-//                               [scanner scanUpToString:startTag intoString:nil];
-//                               scanner.scanLocation += [startTag length];
-//                               [scanner scanUpToString:endTag intoString:&descriptionString
-//                                ];
-//                               
-//                               NSLog(@"%@", descriptionString);
-//                               
-//                               
-//                               //IMAGE
-//                               //
-//                               NSString *imageString = nil;
-//                               
-//                               scanner = [[NSScanner alloc] initWithString:htmlString];
-//                               startTag = @"dtmTag.dtmc_prod_img =";
-//                               endTag = @";";
-//                               
-//                               [scanner scanUpToString:startTag intoString:nil];
-//                               scanner.scanLocation += [startTag length];
-//                               [scanner scanUpToString:endTag intoString:&imageString
-//                                ];
-//                               
-//                               NSLog(@"%@", imageString);
+                               scanner = [[NSScanner alloc] initWithString:descriptionString];
+                               [scanner scanUpToString:startTag intoString:nil];
+                               scanner.scanLocation += [startTag length];
+                               [scanner scanUpToString:endTag intoString:&descriptionString
+                                ];
+                               
+                               NSLog(@"%@", descriptionString);
+                               
+                               
+                               //IMAGE
+                               //
+                               NSString *imageString = nil;
+                               
+                               scanner = [[NSScanner alloc] initWithString:htmlString];
+                               startTag = @"dtmTag.dtmc_prod_img =";
+                               endTag = @";";
+                               
+                               [scanner scanUpToString:startTag intoString:nil];
+                               scanner.scanLocation += [startTag length];
+                               [scanner scanUpToString:endTag intoString:&imageString
+                                ];
+                               
+                               NSLog(@"%@", imageString);
      
                                
                            }];
-    
-    
-    
-    
-    
-    
-    //NAME
     
     
 }
